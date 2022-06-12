@@ -3,8 +3,8 @@
         <title>Dumb Game</title>
         
     
-<link rel="preload" href="/bevy_rpg_test/messing-93feaa881cef1daf_bg.wasm" as="fetch" type="application/wasm" crossorigin="">
-<link rel="modulepreload" href="/bevy_rpg_test/messing-93feaa881cef1daf.js"></head>
+<link rel="preload" href="/bevy_rpg_test/messing_bg.wasm" as="fetch" type="application/wasm" crossorigin="">
+<link rel="modulepreload" href="/bevy_rpg_test/messing.js"></head>
     <body>
         <script>// Insert hack to make sound autoplay on Chrome as soon as the user interacts with the tab:
 // https://developers.google.com/web/updates/2018/11/web-audio-autoplay#moving-forward
@@ -71,31 +71,4 @@
 </script>
     
 
-<script type="module">import init from '/bevy_rpg_test/messing-93feaa881cef1daf.js';init('/bevy_rpg_test/messing-93feaa881cef1daf_bg.wasm');</script><script>(function () {
-    var protocol = window.location.protocol === 'https:' ? 'wss:' : 'ws:';
-    var url = protocol + '//' + window.location.host + '/bevy_rpg_test/_trunk/ws';
-    var poll_interval = 5000;
-    var reload_upon_connect = () => {
-        window.setTimeout(
-            () => {
-                // when we successfully reconnect, we'll force a
-                // reload (since we presumably lost connection to
-                // trunk due to it being killed, so it will have
-                // rebuilt on restart)
-                var ws = new WebSocket(url);
-                ws.onopen = () => window.location.reload();
-                ws.onclose = reload_upon_connect;
-            },
-            poll_interval);
-    };
-
-    var ws = new WebSocket(url);
-    ws.onmessage = (ev) => {
-        const msg = JSON.parse(ev.data);
-        if (msg.reload) {
-            window.location.reload();
-        }
-    };
-    ws.onclose = reload_upon_connect;
-})()
-</script></body></html>
+<script type="module">import init from '/bevy_rpg_test/messing.js';init('/bevy_rpg_test/messing_bg.wasm');</script></body></html>
